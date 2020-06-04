@@ -9,16 +9,22 @@
     <h1>Parsing log Apache</h1>
     <table border=1>
         <tr>
+            <th>pk</th>
             <th>IP</th>
             <th>Browser</th>
             <th>Date</th>
             <!-- <td>String</td> -->
         </tr>
         <tr>
-            <td>{{ ip_line }}</td>
-            <td>{{ brow_line }}</td>
-            <td>{{ date_obj }}</td>
-            <!-- <td>{{ line }}</td> -->
+            {% for line in lines %}
+                <tr>
+                    <td>{{ line.pk }}</td>
+                    <td>{{ line.ip }}</td>
+                    <td>{{ line.browser }}</td>
+                    <td>{{ line.date }}</td>
+                    <!-- <td>{{ line }}</td> -->
+                </tr>   
+            {% endfor %}
         </tr>
     </table>
 </body>
