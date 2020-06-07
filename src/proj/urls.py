@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from testapp.views import pars
+from testapp.views import Test, CreateGenre, UpdateGenre, ListGenre
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/', pars),
+    path('test/', Test.as_view()),
+    path('create_genre/', CreateGenre.as_view()),
+    path('update_genre/<int:pk>', UpdateGenre.as_view()),
+    path('list_genre', ListGenre.as_view()),
 ]
