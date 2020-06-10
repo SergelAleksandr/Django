@@ -6,14 +6,11 @@
     <title>Книги</title>
 </head>
 <body>
-    <h1>Список жанров</h1>
-
-    {% for genre in object_list %}
-    <li>
-    {{ genre.name }}
-    </li>
-    {% endfor %}
-     
+    <h1>Удалить жанр {{ object.name }}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Вы уверены?">
+    </form>
     
 </body>
 </html>

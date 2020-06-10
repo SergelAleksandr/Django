@@ -25,11 +25,11 @@ class Book(models.Model):
         verbose_name='Название книги',
         max_length=100
     )
-    genre = models.ForeignKey(
-        Genre,
-        on_delete=models.PROTECT,
-        verbose_name='Жанр книги',
-    )
+    # genre = models.ForeignKey(
+    #     Genre,
+    #     on_delete=models.PROTECT,
+    #     verbose_name='Жанр книги',
+    # )
     description = models.TextField(
         verbose_name='Описание книги',
         null=True,
