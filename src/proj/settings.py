@@ -26,6 +26,7 @@ SECRET_KEY = 'n4jjt7xvw-#^$b+l*axkk42s*0_03^wnu8v&j7*19by$8+%2g&'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# 'http://sergalnik.pythonanywhere.com/list_genre/'
 
 
 # Application definition
@@ -37,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'testapp',
+    
 ]
 
 MIDDLEWARE = [
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'proj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR), 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +69,9 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')
 ]
 
 WSGI_APPLICATION = 'proj.wsgi.application'
@@ -123,3 +129,5 @@ STATIC_ROOT = '/home/SergAlNik/bookshop/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

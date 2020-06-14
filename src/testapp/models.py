@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 
 
@@ -8,7 +9,6 @@ class Genre(models.Model):
     name = models.CharField(
         verbose_name='Название жанра',
         max_length=100,
-        help_text='Выберите жанр'
     )
     description = models.TextField(
         verbose_name='Описание жанра',
@@ -18,6 +18,11 @@ class Genre(models.Model):
     
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse_lazy ("genres:list")
+    
+    
 
 class Book(models.Model):
     # pk PK + autoincrement not null

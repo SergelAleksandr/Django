@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Книги</title>
-</head>
-<body>
-    <h1>Удалить жанр {{ object.name }}</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Вы уверены?">
-    </form>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Удаление жанра{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+        <br><br>
+        <h1>Удалить жанр {{ object.name }}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Вы уверены?</button>
+        </form>
+    </div>  
+{% endblock body %}
