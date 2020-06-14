@@ -130,8 +130,6 @@ STATIC_ROOT = '/home/SergAlNik/bookshop/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
-<<<<<<< HEAD
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-=======
->>>>>>> 3473e2c82dbacc58e16c687dcdafb3b0e3652da6
+
