@@ -25,4 +25,4 @@ urlpatterns = [
     path('genres/', include('genre.urls', namespace='genres')),
     path('books/', include('books.urls', namespace='books')),
     # path('home/', HomePageView.as_view(), name='home'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
