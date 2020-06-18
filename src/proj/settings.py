@@ -26,8 +26,8 @@ SECRET_KEY = 'n4jjt7xvw-#^$b+l*axkk42s*0_03^wnu8v&j7*19by$8+%2g&'
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['sergalnik.pythonanywhere.com']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sergalnik.pythonanywhere.com']
 
 
 
@@ -132,8 +132,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/SergAlNik/bookshop/static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
