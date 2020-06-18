@@ -25,12 +25,11 @@ SECRET_KEY = 'n4jjt7xvw-#^$b+l*axkk42s*0_03^wnu8v&j7*19by$8+%2g&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['sergalnik.pythonanywhere.com']
-# 'http://sergalnik.pythonanywhere.com/list_genre/'
-=======
-ALLOWED_HOSTS = ['sergalnik.pythonanywhere.com']
->>>>>>> 3473e2c82dbacc58e16c687dcdafb3b0e3652da6
+
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['sergalnik.pythonanywhere.com']
+
+
 
 
 # Application definition
@@ -43,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'testapp',
+    'genre',
+    'books',
     
 ]
 
@@ -132,9 +132,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/SergAlNik/bookshop/static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
-<<<<<<< HEAD
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = '/home/SergAlNik/bookshop/media'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-=======
->>>>>>> 3473e2c82dbacc58e16c687dcdafb3b0e3652da6
+
