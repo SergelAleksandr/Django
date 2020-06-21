@@ -24,11 +24,6 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
     path('genres/', include('genre.urls', namespace='genres')),
     path('books/', include('books.urls', namespace='books')),
-<<<<<<< HEAD
     path('profiles/', include('profiles.urls', namespace='profiles')),
 ]
 #  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-=======
-    # path('home/', HomePageView.as_view(), name='home'),
-] 
->>>>>>> d617068c5c63c1af1731dac8571c873c2176b6b1
