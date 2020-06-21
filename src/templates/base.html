@@ -56,14 +56,29 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Обзор</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">Авторы</a>
-          <a class="dropdown-item" href="#">Жанры</a>
+          <a class="dropdown-item" href="{% url "genres:list" %}">Жанры</a>
         </div>
       </li>
+      {% if user.is_superuser %}:
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:login' %}">Админ</a>
+      </li>
+      {% endif %}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
     </form>
+    &emsp;
+      <div id="user-tools">
+        {% if user.is_authenticated %}:
+          <strong style="color:white;">Добро пожаловать, {{ user }}</strong>
+          <a href="/admin/password_change/">Изменить пароль</a> /
+          <a href="/admin/logout/">Выйти</a>
+        {% else %}:
+          <button type="button" class="btn btn-light"><a href="{% url "profile:login" %}">Войти/Зарегистрироваться</a></button>
+        {% endif %}
+      </div>
   </div>
 </nav>
 

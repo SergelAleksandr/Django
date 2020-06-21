@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Информация о пользователе{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+        <br><br>
+        <h1>Пользователь {{ object.first_name }} {{ object.last_name }}</h1>
+        <table width='100%' class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Изображение</th>                    
+                    <th scope="col">Никнэйм</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Email</th>           
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <tr>
+                        <td><img src="{{ object.image.url }}" width="150" alt=""> </td>
+                        <td>{{ object.user }}</td>
+                        <td>{{ object.first_name }}</td>
+                        <td>{{ object.last_name }}</td>
+                        <td>{{ object.email }}</td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+{% endblock body %}

@@ -26,12 +26,17 @@ class Books(models.Model):
         null=True,
         blank=True
     )
-    price = models.IntegerField(
+    price = models.FloatField(
         verbose_name='Стоимость книги',
+    )
+    add_time = models.DateTimeField(
+        verbose_name='Дата добавления',
+        auto_now=False,
+        auto_now_add=True
     )
     
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse_lazy ("books:list")
+        return reverse_lazy("books:list")

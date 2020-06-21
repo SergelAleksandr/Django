@@ -8,7 +8,7 @@ class Genre(models.Model):
     # pk PK + autoincrement not null
     name = models.CharField(
         verbose_name='Название жанра',
-        max_length=120,
+        max_length=120
     )
     description = models.TextField(
         verbose_name='Описание жанра',

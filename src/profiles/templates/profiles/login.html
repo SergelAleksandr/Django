@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Логин{% endblock title %}
+
+{% block body %}
+  <div class='container'>
+      <br><br><br>
+    <form>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="{{ object.email }}" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Введите Ваш адрес электронной почты</small>
+      </div>
+      <div class="form-group">
+        <label for="{{ object.password }}">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-danger"><a href="{% url "profile:create" %}">Зарегистрироваться</a></button><br>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+{% endblock body %}

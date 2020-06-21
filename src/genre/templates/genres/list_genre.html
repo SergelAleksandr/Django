@@ -8,11 +8,12 @@
     <div class='container'>
     <br><br>
     <h1>Список жанров</h1>
-    <a href="{% url 'genres:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Создать новый жанр</a><br>
+    {% if user.is_superuser %}
+        <a href="{% url 'genres:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Создать новый жанр</a><br>
+    {% endif %}
     <table width='100%' class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Имя</th>
                 <th scope="col">Действие</th>            
             </tr>
@@ -21,11 +22,12 @@
             <tr>
                 {% for obj in object_list %}
                     <tr>
-                        <th scope="row">{{ obj.pk }}</th>
                         <td><a href="{% url "genres:detail" obj.pk %}">{{ obj.name }}</a></td>
                         <td>
-                            <a href="{% url "genres:update" obj.pk %}">Изменить</a><br>
-                            <a href="{% url "genres:delete" obj.pk %}">Удалить</a><br>
+                            {% if user.is_superuser %}
+                                <a href="{% url "genres:update" obj.pk %}">Изменить</a><br>
+                                <a href="{% url "genres:delete" obj.pk %}">Удалить</a><br>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
