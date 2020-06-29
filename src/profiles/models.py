@@ -10,6 +10,10 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
+    username = models.CharField(
+        verbose_name='Имя пользователя',
+        max_length=15
+    )
     password = models.CharField(
         verbose_name='Пароль',
         max_length=15
@@ -31,6 +35,7 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
+
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"

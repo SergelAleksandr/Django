@@ -7,9 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView, DetailView, TemplateView
 
 
-class Login(TemplateView):
-    model = Profile
-    template_name = 'profiles/login.html'
 
     # def my_view(request):
     # username = request.POST['email']
@@ -26,24 +23,26 @@ class CreateProfile(CreateView):
     model = Profile
     form_class = CreateProfileForm
     template_name = 'profiles/create_profile.html'
+    def get_success_url(self):
+        return reverse_lazy('profile:detail', kwargs={'pk': self.object.pk})
 
-class UpdateProfile(UpdateView):
+class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = CreateProfileForm
     template_name = 'profiles/update_profile.html'
     def get_success_url(self):
         return reverse_lazy('profile:detail', kwargs={'pk': self.object.pk})
 
-class ListProfile(ListView):
+class ListProfile(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'profiles/list_profile.html'
 
-class DeleteProfile(DeleteView):
+class DeleteProfile(LoginRequiredMixin, DeleteView):
     model = Profile
     template_name = 'profiles/delete_profile.html'
     success_url = reverse_lazy('profile:list')
 
-class DetailProfile(DetailView):
+class DetailProfile(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'profiles/detail_profile.html'
 

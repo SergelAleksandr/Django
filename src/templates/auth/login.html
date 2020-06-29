@@ -1,0 +1,43 @@
+{% extends 'base_login.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Логин{% endblock title %}
+
+{% block body %}
+  <div class='container'>
+      <br><br><br>
+
+{% if form.errors %}
+<p>Ваши логин и пароль не совпадают. Попробуйте еще раз.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>У Вас нет доступа к этой странице.</p>
+    {% else %}
+    <p>Пожалуйста, войдите в учетную запись для продолжения.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'auth:login' %}">
+{% csrf_token %}
+      <div class="form-group">
+        <label for="{{ object.username }}">Имя пользователя</label>
+        <input type="username" class="form-control" id="{{ object.username }}" aria-describedby="Help">
+        <small id="Help" class="form-text text-muted">Введите имя пользователя</small>
+      </div>
+      <div class="form-group">
+        <label for="{{ object.password }}">Пароль</label>
+        <input type="password" class="form-control" id="{{ object.password }}">
+      </div>
+      <button type="submit" class="btn btn-danger"><a href="{% url "profile:create" %}">Зарегистрироваться</a></button><br>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+{% comment %} <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
+
+{% endblock %}

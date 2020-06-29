@@ -20,28 +20,29 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_books'] = Books.objects.all().order_by('-add_time')
+        context['latest_books'] = Books.objects.all().order_by('-add_time')[:4]
         return context
 
 
-class CreateBook(CreateView):
+class CreateBook(LoginRequiredMixin, CreateView):
     model = Books
     form_class = CreateBookForm
     template_name = 'books/create_book.html'
 
 
-class UpdateBook(UpdateView):
+class UpdateBook(LoginRequiredMixin, UpdateView):
     model = Books
     form_class = CreateBookForm
     template_name = 'books/update_book.html'
     def get_success_url(self):
         return reverse_lazy('books:detail', kwargs={'pk': self.object.pk})
+    
 
 class ListBook(ListView):
     model = Books
     template_name = 'books/list_book.html'
 
-class DeleteBook(DeleteView):
+class DeleteBook(LoginRequiredMixin, DeleteView):
     model = Books
     template_name = 'books/delete_book.html'
     success_url = reverse_lazy('books:list')

@@ -28,11 +28,14 @@
         }
       }
       footer {
+        position: fixed;
         left: 7%; bottom: 0; /* Левый нижний угол */
         padding: 1px; /* Поля вокруг текста */
         background: rgb(52, 58, 68); /* Цвет фона */
         color: #fff; /* Цвет текста */
         width: 100%; /* Ширина слоя */
+        margin-top: -50px; /*Минус Высота футера*/
+        height: 50px; /*Высота футера*/
       }
     </style>
 
@@ -76,15 +79,17 @@
           <a href="/admin/password_change/">Изменить пароль</a> /
           <a href="/admin/logout/">Выйти</a>
         {% else %}:
-          <button type="button" class="btn btn-light"><a href="{% url "profile:login" %}">Войти/Зарегистрироваться</a></button>
+          <button type="button" class="btn btn-light"><a href="{% url "auth:login" %}">Войти/Зарегистрироваться</a></button>
         {% endif %}
       </div>
   </div>
 </nav>
+<br><br><br>
 
 <main role="main">
 {% block body %}<h1>Не получилось</h1>{% endblock body %}
 </main>
+<br><br><br>
 
 <footer class="container">
   <p>&copy; Книгарня 2020</p>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}Удаление книги{% endblock title %}
+{% block title %}Удаление пользователя{% endblock title %}
 
 {% block body %}
     <div class='container'>
         <br><br>
-        <h1>Удалить книгу {{ object.name }}</h1>
+        <h1>Удалить пользователя {{ object.name }}</h1>
         <form action="" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-danger">Вы уверены?</button>
