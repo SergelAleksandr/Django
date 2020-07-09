@@ -25,4 +25,5 @@ urlpatterns = [
     path('books/', include('books.urls', namespace='books')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('auth/', include('profiles.urls_auth', namespace='auth')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('author/', include('author.urls', namespace='author')),
+] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

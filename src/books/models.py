@@ -1,13 +1,15 @@
 from django.db import models
 from django.urls import reverse_lazy
 from genre.models import Genre
+from author.models import Author
 
 class Books(models.Model):
     name = models.CharField(
         verbose_name='Название книги',
         max_length=100
     )
-    author = models.CharField(
+    author = models.ManyToManyField(
+        Author,
         verbose_name='Автор книги',
         max_length=100
     )
@@ -24,17 +26,53 @@ class Books(models.Model):
         verbose_name='Обложка книги',
         upload_to='book_cover',
         null=True,
-        blank=True
+        blank=False
     )
     price = models.FloatField(
         verbose_name='Стоимость книги',
+    )
+    year = models.IntegerField(
+        verbose_name='Год издания',
+    )
+    quantity = models.IntegerField(
+        verbose_name='Количество страниц',
+    )
+    binding = models.CharField(
+        verbose_name='Переплет',
+        max_length=100
+    )
+    forma = models.CharField(
+        verbose_name='Формат',
+        max_length=10
+    )
+    isbn = models.CharField(
+        verbose_name='ISBN',
+        max_length=20
+    )
+    weight = models.IntegerField(
+        verbose_name='Вес (гр.)',
+    )
+    age = models.IntegerField(
+        verbose_name='Возрастные ограничения',
+    )
+    publishing = models.CharField(
+        verbose_name='Издательство',
+        max_length=20
+    )
+    rate = models.IntegerField(
+        verbose_name='Рейтинг (0-10)',
     )
     add_time = models.DateTimeField(
         verbose_name='Дата добавления',
         auto_now=False,
         auto_now_add=True
     )
-    
+    update_time = models.DateTimeField(
+        verbose_name='Дата изменения',
+        auto_now=True,
+        auto_now_add=False
+    )
+
     def __str__(self):
         return self.name
 

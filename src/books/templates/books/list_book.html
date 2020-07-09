@@ -11,6 +11,9 @@
     {% if user.is_superuser %}:
         <a href="{% url 'books:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить новую книгу</a><br>
     {% endif %}
+    <br>
+    {% include "paginator.html" %}
+    
     <table width='100%' class="table table-bordered">
         <thead>
             <tr>

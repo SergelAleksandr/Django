@@ -4,32 +4,76 @@
 {% block title %}Информация о книге{% endblock title %}
 
 {% block body %}
+  <style type="text/css">
+   BODY {
+    background: #ebd5b3; /* Цвет фона веб-страницы */
+   }
+   TABLE {
+    width: 300px; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    border: 2px solid white; /* Прячем рамку вокруг таблицы */
+   }
+   TD, TH {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid maroon; /* Параметры рамки */
+    text-align: left; /* Выравнивание по левому краю */
+   }
+  </style>
     <div class='container'>
         <br><br>
         <h1>Книга {{ object.name }}</h1>
-        <table width='100%' class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Обложка</th>
-                    <th scope="col">Название книги</th>
-                    <th scope="col">Автор</th>
-                    <th scope="col">Жанр</th>
-                    <th scope="col">Стоимость</th>
-                    <th scope="col">Описание</th>            
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <tr>
-                        <td><img src="{{ object.image.url }}" width="150" alt=""> </td>
-                        <td>{{ object.name }}</td>
-                        <td>{{ object.author }}</td>
-                        <td>{{ object.genre }}</td>
-                        <td>{{ object.price }}</td>
-                        <td>{{ object.description }}</td>
-                    </tr>
-                </tr>
-            </tbody>
+        <div>
+            <button data-cart-btn=""  class='container' class="ok-product__add-shcart ok-btn  -btn-shopping-cart ok-product__btn"><a class="ok-product__go-shcart ok-btn -btn-theme-action" href="#"><span>В корзину</span></a></button>
+        </div>
+        <table width='100%' class='container' class="table table-bordered" cellspacing="0" border="2">
+            <tr>
+                <th scope="col">Обложка книги</th><td><img src="{{ object.image.url }}" width="150" alt=""> </td>
+            </tr>
+            <tr>
+                <th scope="col">Автор книги</th><td>{{ object.author }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Описание книги</th><td>{{ object.description }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Жанр</th><td>{{ object.genre }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Стоимость</th><td>{{ object.price }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Год издания</th><td>{{ object.year }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Количество страниц</th><td>{{ object.quantity }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Переплет</th><td>{{ object.binding }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Формат</th><td>{{ object.forma }}</td>
+            </tr>
+            <tr>
+                <th scope="col">ISBN'</th><td>{{ object.isbn }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Вес (гр.)</th><td>{{ object.weight }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Возрастные ограничения</th><td>{{ object.age }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Издательство</th><td>{{ object.publishing }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Рейтинг</th><td>{{ object.rate }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Дата добавления</th><td>{{ object.add_time }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Дата изменения</th><td>{{ object.update_time }}</td>
+            </tr>
         </table>
     </div>  
 {% endblock body %}

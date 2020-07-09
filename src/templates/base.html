@@ -13,6 +13,10 @@
   {% comment %} <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> {% endcomment %}
 
     <style>
+       body {
+        background: #ebd5b3; /* Цвет фона */
+        
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -40,7 +44,7 @@
     </style>
 
   </head>
-  <body>
+  <body bgcolor="#fa8e47">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" href="/books/home/">Книгарня</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +62,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Обзор</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Авторы</a>
+          <a class="dropdown-item" href="{% url "author:list" %}">Авторы</a>
           <a class="dropdown-item" href="{% url "genres:list" %}">Жанры</a>
         </div>
       </li>

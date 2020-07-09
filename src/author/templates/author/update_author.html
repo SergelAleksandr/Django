@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Изменение данных автора{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+    <br><br>
+    <h1>Изменить данные автора</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Подтвердить">
+    </form>
+    </div> 
+{% endblock body %}

@@ -2,6 +2,7 @@ from .models import Books
 from .forms import CreateBookForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Count
 
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView, DetailView, TemplateView
 
@@ -15,13 +16,17 @@ from django.views.generic import CreateView, UpdateView, ListView, DeleteView, D
 #         return context
 
 class HomePageView(TemplateView):
-    # model = Books
     template_name = 'books/home.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_books'] = Books.objects.all().order_by('-add_time')[:4]
+        context['latest_books'] = Books.objects.all().order_by('-add_time')[:6]
+        context['most_popular'] = Books.objects.all().order_by('rate')[:6]
         return context
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['most_popular'] = Books.objects.all().order_by('rate')[:6]
 
 
 class CreateBook(LoginRequiredMixin, CreateView):
@@ -41,6 +46,7 @@ class UpdateBook(LoginRequiredMixin, UpdateView):
 class ListBook(ListView):
     model = Books
     template_name = 'books/list_book.html'
+    paginate_by = 10
 
 class DeleteBook(LoginRequiredMixin, DeleteView):
     model = Books

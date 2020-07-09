@@ -10,5 +10,14 @@ class CreateBookForm(forms.ModelForm):
             'description',
             'genre',
             'price',
-            'image'
+            'image',
+            'year',
+            'quantity',
+            'binding',
+            'forma',
+            'isbn',
+            'weight',
+            'age',
+            'publishing',
+            'rate',
         )
