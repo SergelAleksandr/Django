@@ -31,7 +31,11 @@
                     <tr>
                         <td><img src="{{ obj.image.url }}" width="150" alt=""></td>
                         <td><a href="{% url "books:detail" obj.pk %}">{{ obj.name }}</a></td>
-                        <td>{{ obj.author }}</td>
+                        <td>
+                        {% for author in obj.author.all %}
+                            {{ author }}<br>
+                        {% endfor %}
+                        </td>
                         <td>{{ obj.genre }}</td>
                         <td>{{ obj.price }}</td>
                         <td>

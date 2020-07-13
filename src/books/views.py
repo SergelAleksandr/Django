@@ -21,7 +21,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_books'] = Books.objects.all().order_by('-add_time')[:6]
-        context['most_popular'] = Books.objects.all().order_by('rate')[:6]
+        context['most_popular'] = Books.objects.all().order_by('-rate')[:6]
         return context
     
     # def get_context_data(self, **kwargs):

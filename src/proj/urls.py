@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from books.views import HomePageView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,4 +27,5 @@ urlpatterns = [
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('auth/', include('profiles.urls_auth', namespace='auth')),
     path('author/', include('author.urls', namespace='author')),
-] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', HomePageView.as_view(), name='home')
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

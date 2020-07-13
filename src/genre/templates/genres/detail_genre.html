@@ -6,7 +6,13 @@
 {% block body %}
     <div class='container'>
         <br><br>
-        <h1>Жанр {{ object.name }}</h1>
-        <h3>{{ object.description }}</h3>
+        <h1>Жанр {{ object.name }}</h1><br>
+        <h3>Описание: {{ object.description }}</h3><br>
+        <h4>
+            Книги жанра {{ object.name }}:<br>
+            {% for book in object.books1.all %}
+                <a href="{% url "books:detail" object.pk %}">{{ book }}</a><br>
+            {% endfor %}
+        </h4>
     </div>  
 {% endblock body %}

@@ -9,5 +9,4 @@ urlpatterns = [
     path('list_book/', views.ListBook.as_view(), name='list'),
     path('delete_book/<int:pk>', views.DeleteBook.as_view(), name='delete'),
     path('detail_book/<int:pk>', views.DetailBook.as_view(), name='detail'),
-    path('home/', views.HomePageView.as_view(), name='home')
 ] 

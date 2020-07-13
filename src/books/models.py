@@ -10,17 +10,18 @@ class Books(models.Model):
     )
     author = models.ManyToManyField(
         Author,
-        verbose_name='Автор книги',
-        max_length=100
+        verbose_name='Автор',
+        related_name='books'
     )
     description = models.TextField(
         verbose_name='Описание книги',
         null=True,
         blank=True
     )
-    genre = models.ForeignKey(
+    genre = models.ManyToManyField(
         Genre,
-        on_delete=models.PROTECT
+        verbose_name='Жанр',
+        related_name='books1'
     )
     image = models.ImageField(
         verbose_name='Обложка книги',

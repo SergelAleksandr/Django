@@ -30,13 +30,21 @@
                 <th scope="col">Обложка книги</th><td><img src="{{ object.image.url }}" width="150" alt=""> </td>
             </tr>
             <tr>
-                <th scope="col">Автор книги</th><td>{{ object.author }}</td>
+                <th scope="col">Автор книги</th><td>
+                {% for author in object.author.all %}
+                    <a href="{% url "author:detail" object.pk %}">{{ author }}</a>
+                {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th scope="col">Описание книги</th><td>{{ object.description }}</td>
             </tr>
             <tr>
-                <th scope="col">Жанр</th><td>{{ object.genre }}</td>
+                <th scope="col">Жанр книги</th><td>
+                {% for genre in object.genre.all %}
+                    <a href="{% url "books:detail" object.pk %}">{{ genre }}</a><br>
+                {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th scope="col">Стоимость</th><td>{{ object.price }}</td>

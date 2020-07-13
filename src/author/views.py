@@ -32,11 +32,6 @@ class DetailAuthor(DetailView):
     model = Author
     template_name = 'author/detail_author.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['books'] = Books.objects.filter(pk__in=Author.books)
-        return context
-
 
 
 
