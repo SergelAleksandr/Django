@@ -83,7 +83,7 @@
           <a href="/admin/password_change/">Изменить пароль</a> /
           <a href="/admin/logout/">Выйти</a>
         {% else %}:
-          <button type="button" class="btn btn-light"><a href="{% url "auth:login" %}">Войти/Зарегистрироваться</a></button>
+          <button type="button" class="btn btn-light"><a href="{% url "profile:login" %}">Войти/Зарегистрироваться</a></button>
         {% endif %}
       </div>
   </div>
