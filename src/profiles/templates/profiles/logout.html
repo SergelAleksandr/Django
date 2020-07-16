@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Список книг{% endblock title %}
+
+{% block body %}
+ <div class='container'>
+    <h1>Выход</h1>
+        <p>Вы успешно вышли из учетной записи. Вы можете <a href="{% url "profiles:login" %}">войти снова</a>.</p>
+ </div>
+{% endblock body %}

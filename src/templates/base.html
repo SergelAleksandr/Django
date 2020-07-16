@@ -80,8 +80,8 @@
       <div id="user-tools">
         {% if user.is_authenticated %}:
           <strong style="color:white;">Добро пожаловать, {{ user }}</strong>
-          <a href="/admin/password_change/">Изменить пароль</a> /
-          <a href="/admin/logout/">Выйти</a>
+          <a href="{% url "profile:password_change" %}">Изменить пароль</a> /
+          <a href="{% url "profile:logout" %}">Выйти</a>
         {% else %}:
           <button type="button" class="btn btn-light"><a href="{% url "profile:login" %}">Войти/Зарегистрироваться</a></button>
         {% endif %}

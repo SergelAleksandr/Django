@@ -38,8 +38,16 @@ class Profile(models.Model):
     )
     email = models.EmailField(verbose_name='E-mail')
     phone_number = models.IntegerField(verbose_name='Номер телефона')
-    address1 = models.TextField(verbose_name='Адрес доставки основной'),
-    address2 = models.TextField(verbose_name='Адрес доставки дополнительный'),
+    address1 = models.CharField(
+        verbose_name='Адрес доставки основной',
+        max_length=500
+    )
+    address2 = models.CharField(
+        verbose_name='Адрес доставки дополнительный',
+        max_length=500,
+        null=True,
+        blank=True
+    )
     image = models.ImageField(
         verbose_name='Изображение',
         upload_to='profile_image',
@@ -51,4 +59,4 @@ class Profile(models.Model):
         return f"{self.user.first_name} {self.user.last_name}"
 
     def get_absolute_url(self):
-        return reverse_lazy("books:home")
+        return reverse_lazy("home")

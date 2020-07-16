@@ -36,7 +36,11 @@
                             {{ author }}<br>
                         {% endfor %}
                         </td>
-                        <td>{{ obj.genre }}</td>
+                        <td>
+                        {% for genre in obj.genre.all %}
+                            {{ genre }}<br>
+                        {% endfor %}
+                        </td>
                         <td>{{ obj.price }}</td>
                         <td>
                             {% if user.is_superuser %}:

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_login.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}Добавление пользователя{% endblock title %}
@@ -8,11 +8,11 @@
       <br><br>
       <h1>Добавить пользователя</h1>
       <form action="" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div>
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-outline-danger">Сохранить</button>
-          </div>
+        {% csrf_token %}
+        <div>
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-outline-danger">Сохранить</button>
+        </div>
       </form>
   </div>  
 {% endblock body %}
