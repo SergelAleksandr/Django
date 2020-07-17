@@ -46,6 +46,8 @@
                             {% if user.is_superuser %}:
                                 <a href="{% url "books:update" obj.pk %}">Изменить</a><br>
                                 <a href="{% url "books:delete" obj.pk %}">Удалить</a><br>
+                            {% else %}
+                                <a href="{% url 'cart:add' %}?book_pk={{ obj.pk }}">Добавить в корзину</a><br>
                             {% endif %}
                         </td>
                     </tr>

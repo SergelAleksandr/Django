@@ -15,23 +15,23 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.views.generic import FormView, UpdateView, DetailView, DeleteView, TemplateView
 
-class MyGroups(Group):
-    admin, created = Group.objects.get_or_create(name='Admin')
-    customer, created = Group.objects.get_or_create(name='Customers')
-    manager, created = Group.objects.get_or_create(name='Manager')
-    content_type_books = ContentType.objects.get_for_model(Books)
-    content_type_profile = ContentType.objects.get_for_model(Profile)
-    content_type_genre = ContentType.objects.get_for_model(Genre)
-    content_type_author = ContentType.objects.get_for_model(Author)
-    # content_type_cart = ContentType.objects.get_for_model(BooksInCart) 
-    customer.permissions.add(Permission.objects.get(codename='can_view_books', name='Can view books', content_type=content_type_books))
-    customer.permissions.add(Permission.objects.get(codename='can_view_profile', name='Can view profile', content_type=content_type_profile))
-    customer.permissions.add(Permission.objects.get(codename='can_view_genre', name='Can view genre', content_type=content_type_genre))
-    customer.permissions.add(Permission.objects.get(codename='can_view_author', name='Can view author', content_type=content_type_author))
-    # customer.permissions.add(Permission.objects.get(codename='can_add_books_in_cart', name='Can add books in cart', content_type=content_type_cart))
-    # customer.permissions.add(Permission.objects.get(codename='can_change_books_in_cart', name='Can change books in cart', content_type=content_type_cart))
-    # customer.permissions.add(Permission.objects.get(codename='can_delete_books_in_cart', name='Can delete books in cart', content_type=content_type_cart))
-    # customer.permissions.add(Permission.objects.get(codename='can_view_books_in_cart', name='Can view books in cart', content_type=content_type_cart))
+# class MyGroups(Group):
+#     admin, created = Group.objects.get_or_create(name='Admin')
+#     customer, created = Group.objects.get_or_create(name='Customers')
+#     manager, created = Group.objects.get_or_create(name='Manager')
+#     content_type_books = ContentType.objects.get_for_model(Books)
+#     content_type_profile = ContentType.objects.get_for_model(Profile)
+#     content_type_genre = ContentType.objects.get_for_model(Genre)
+#     content_type_author = ContentType.objects.get_for_model(Author)
+#     # content_type_cart = ContentType.objects.get_for_model(BooksInCart) 
+#     customer.permissions.add(Permission.objects.get(codename='can_view_books', name='Can view books', content_type=content_type_books))
+#     customer.permissions.add(Permission.objects.get(codename='can_view_profile', name='Can view profile', content_type=content_type_profile))
+#     customer.permissions.add(Permission.objects.get(codename='can_view_genre', name='Can view genre', content_type=content_type_genre))
+#     customer.permissions.add(Permission.objects.get(codename='can_view_author', name='Can view author', content_type=content_type_author))
+#     # customer.permissions.add(Permission.objects.get(codename='can_add_books_in_cart', name='Can add books in cart', content_type=content_type_cart))
+#     # customer.permissions.add(Permission.objects.get(codename='can_change_books_in_cart', name='Can change books in cart', content_type=content_type_cart))
+#     # customer.permissions.add(Permission.objects.get(codename='can_delete_books_in_cart', name='Can delete books in cart', content_type=content_type_cart))
+#     # customer.permissions.add(Permission.objects.get(codename='can_view_books_in_cart', name='Can view books in cart', content_type=content_type_cart))
 
 class CreateProfile(FormView):
     form_class = CreateProfileForm
@@ -71,6 +71,9 @@ class CreateProfile(FormView):
             address2=form_address2,
             image=form_image
         )
+        if user.is_anonymous:
+            user = None
+
         return HttpResponseRedirect(self.get_success_url())
         
     def get_success_url(self):

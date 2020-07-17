@@ -79,8 +79,8 @@
     &emsp;
       <div id="user-tools">
         {% if user.is_authenticated %}:
-          <strong style="color:white;">Добро пожаловать, {{ user }}</strong>
-          <a href="{% url "profile:password_change" %}">Изменить пароль</a> /
+          <strong style="color:white;">Добро пожаловать, <a href="{% url "profile:detail" user.pk %}">{{ user }}</a></strong>
+          <a href="{% url "cart:detail" %}">Корзина</a>
           <a href="{% url "profile:logout" %}">Выйти</a>
         {% else %}:
           <button type="button" class="btn btn-light"><a href="{% url "profile:login" %}">Войти/Зарегистрироваться</a></button>

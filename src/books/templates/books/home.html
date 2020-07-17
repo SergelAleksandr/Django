@@ -23,7 +23,7 @@
       </p>
      </div>
      <div class="card-footer">
-      <a href="#" class="card-link">В корзину</a>
+      <a href="{% url 'cart:add' %}?book_pk={{ obj.pk }}" class="card-link">В корзину</a>
      </div>
     </div>
    </div>
@@ -57,8 +57,8 @@
         Рейтинг: {{ obj.rate }}
       </p>
      </div>
-     <div class="card-footer">
-      <a href="#" class="card-link">В корзину</a>
+     <div class="card-footer"> 
+      <a href="{% url 'cart:add' %}?book_pk={{ obj.pk }}" class="card-link">В корзину</a>
      </div>
     </div>
    </div>
