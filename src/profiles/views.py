@@ -23,15 +23,15 @@ from django.views.generic import FormView, UpdateView, DetailView, DeleteView, T
 #     content_type_profile = ContentType.objects.get_for_model(Profile)
 #     content_type_genre = ContentType.objects.get_for_model(Genre)
 #     content_type_author = ContentType.objects.get_for_model(Author)
-#     # content_type_cart = ContentType.objects.get_for_model(BooksInCart) 
+#     ontent_type_cart = ContentType.objects.get_for_model(BooksInCart) 
 #     customer.permissions.add(Permission.objects.get(codename='can_view_books', name='Can view books', content_type=content_type_books))
 #     customer.permissions.add(Permission.objects.get(codename='can_view_profile', name='Can view profile', content_type=content_type_profile))
 #     customer.permissions.add(Permission.objects.get(codename='can_view_genre', name='Can view genre', content_type=content_type_genre))
 #     customer.permissions.add(Permission.objects.get(codename='can_view_author', name='Can view author', content_type=content_type_author))
-#     # customer.permissions.add(Permission.objects.get(codename='can_add_books_in_cart', name='Can add books in cart', content_type=content_type_cart))
-#     # customer.permissions.add(Permission.objects.get(codename='can_change_books_in_cart', name='Can change books in cart', content_type=content_type_cart))
-#     # customer.permissions.add(Permission.objects.get(codename='can_delete_books_in_cart', name='Can delete books in cart', content_type=content_type_cart))
-#     # customer.permissions.add(Permission.objects.get(codename='can_view_books_in_cart', name='Can view books in cart', content_type=content_type_cart))
+#     customer.permissions.add(Permission.objects.get(codename='can_add_books_in_cart', name='Can add books in cart', content_type=content_type_cart))
+#     customer.permissions.add(Permission.objects.get(codename='can_change_books_in_cart', name='Can change books in cart', content_type=content_type_cart))
+#     customer.permissions.add(Permission.objects.get(codename='can_delete_books_in_cart', name='Can delete books in cart', content_type=content_type_cart))
+#     customer.permissions.add(Permission.objects.get(codename='can_view_books_in_cart', name='Can view books in cart', content_type=content_type_cart))
 
 class CreateProfile(FormView):
     form_class = CreateProfileForm
