@@ -21,15 +21,15 @@ def get_cart(request):
     user=request.user
     if user.is_anonymous:
         user=None
-    if cart_pk is not None:
-        cart_pk=int(cart_pk)
     cart, create=models.Cart.objects.get_or_create(
         pk=cart_pk,
         defaults={
-            "user":user,
+            'user':user,
         }
         )
-    return cart, create
+    if create:
+        request.session['cart_pk'] = cart.pk
+    return cart
 
 class AddBookToCart(SuccessMessageMixin, UpdateView):
     model=models.BookInCart
@@ -40,18 +40,19 @@ class AddBookToCart(SuccessMessageMixin, UpdateView):
         return f"Книга {self.object.book} добавлена в корзину"
 
     def get_object(self):
-        cart_pk = self.request.session.get('cart_pk', None)
+        # cart_pk = self.request.session.get('cart_pk', None)
         book_pk = self.request.GET.get('book_pk')
-        book = Books.objects.get(pk=int(book_pk))
-        cart, create = get_cart(self.request)
-        if create:
-            self.request.session['cart_pk']=cart.pk
+        book = Books.objects.get(pk=book_pk)
+        cart = get_cart(self.request)
+        # cart, create = get_cart(self.request)
+        # if create:
+        #     self.request.session['cart_pk']=cart.pk 
         obj, create = self.model.objects.get_or_create(
             cart = cart,
             book = book,
             defaults={}
         )
-        return cart
+        return obj
 
     def get_success_url(self):
        return reverse_lazy('home')
@@ -69,7 +70,7 @@ class CartDelete(DeleteView):
     template_name='cart/delete.html'
 
     def get_success_url(self):
-       return reverse_lazy('home')
+       return reverse_lazy('cart:detail')
 
 class CartDetail(DetailView):
     model = Cart

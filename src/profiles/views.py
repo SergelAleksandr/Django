@@ -93,8 +93,14 @@ class DeleteProfile(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
 class DetailProfile(LoginRequiredMixin, DetailView):
-    model = Profile
+    model = User
     template_name = 'profiles/detail_profile.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     user_pk = self.kwargs.get('user_pk')
+    #     context['profile'] = Profile.objects.all().filter(pk=user_pk)
+    #     return context
 
 # ЛОГИН
 class Login(LoginView):

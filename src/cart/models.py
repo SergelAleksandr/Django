@@ -28,7 +28,7 @@ class BookInCart(models.Model):
     cart = models.ForeignKey(
         Cart,
         on_delete=models.CASCADE,
-        related_name='cart',
+        related_name='books',
     )
     book = models.ForeignKey(
         Books,

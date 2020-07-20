@@ -12,9 +12,9 @@
             {% comment %} <td>{{ books_in_cart.book }}</td>
             <td>{{ books_in_cart.quantity }}</td> {% endcomment %}
 
-                <h4><li class="list-group-item list-group-item-action list-group-item-light">{{ books.book.name }} <span class="badge badge-secondary">{{ books.quantity }} шт. {{ books.price }} BYN.</span>
-                <a href="{% url 'cart:delete' books.pk %}"><i class="fas fa-trash-alt" style="color:yellow"></i></a>
-                <a href="{% url 'cart:add' %}?book_pk={{books.book.pk}}"><i class="fas fa-edit" style="color:yellow"></i></a></li></h4></li>
+                <h4><li class="list-group-item list-group-item-action list-group-item-dark">{{ books_in_cart.book.name }} <span>{{ books_in_cart.quantity }} шт. {{ books_in_cart.price }} BYN.</span>
+                <a href="{% url 'cart:delete' books_in_cart.pk %}"><i class="fas fa-trash-alt" style="color:blue"></i></a>
+                <a href="{% url 'cart:add' %}?book_pk={{books_in_cart.book.pk}}"><i class="fas fa-edit" style="color:blue"></i></a></li></h4></li>
         </tr>
     {% endfor %}
     <br>

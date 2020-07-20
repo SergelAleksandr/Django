@@ -7,6 +7,5 @@ class AddBookToCartForm(forms.ModelForm):
   class Meta:
       model=BookInCart
       fields=(
-        'book',
         'quantity',
       )

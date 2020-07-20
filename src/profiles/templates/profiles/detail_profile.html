@@ -6,7 +6,10 @@
 {% block body %}
     <div class='container'>
         <a href="{% url "profile:password_change" %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Изменить пароль</a><br>
-        <br><br>
+        <br>
+        <a href="{% url "profile:update" object.pk %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Изменить данные пользователя</a><br>
+        <br>
+        
         <h1>Пользователь {{ object.first_name }} {{ object.last_name }}</h1>
         <table width='100%' class="table table-bordered">
             <thead>
@@ -24,14 +27,16 @@
             <tbody>
                 <tr>
                     <tr>
-                        <td><img src="{{ object.image.url }}" width="150" alt=""> </td>
-                        <td>{{ object.user }}</td>
-                        <td>{{ object.first_name }}</td>
-                        <td>{{ object.last_name }}</td>
-                        <td>{{ object.email }}</td>
-                        <td>{{ object.phone_number }}</td>
-                        <td>{{ object.address1 }}</td>
-                        <td>{{ object.address2 }}</td>
+                        {% for obj in profile %}
+                            <td><img src="{{ obj.image.url }}" width="150" alt=""> </td>
+                            <td>{{ object.username }}</td>
+                            <td>{{ object.first_name }}</td>
+                            <td>{{ object.last_name }}</td> 
+                            <td>{{ object.email }}</td>
+                            <td>{{ obj.phone_number }}</td>
+                            <td>{{ obj.address1 }}</td>
+                            <td>{{ obj.address2 }}</td>
+                        {% endfor %}
                     </tr>
                 </tr>
             </tbody>
