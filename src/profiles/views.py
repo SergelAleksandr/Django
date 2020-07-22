@@ -62,7 +62,7 @@ class CreateProfile(FormView):
         if create:
             user.set_password(form_password)
             user.save()
-        profile, create=Profile.objects.get_or_create(
+        profile, create = Profile.objects.get_or_create(
             user=User.objects.get(username=form_username),
             first_name=form_first_name,
             last_name=form_last_name,
@@ -93,14 +93,8 @@ class DeleteProfile(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
 class DetailProfile(LoginRequiredMixin, DetailView):
-    model = User
+    model = Profile
     template_name = 'profiles/detail_profile.html'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     user_pk = self.kwargs.get('user_pk')
-    #     context['profile'] = Profile.objects.all().filter(pk=user_pk)
-    #     return context
 
 # ЛОГИН
 class Login(LoginView):

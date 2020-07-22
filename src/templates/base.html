@@ -79,7 +79,7 @@
     &emsp;
       <div id="user-tools">
         {% if user.is_authenticated %}:
-          <strong style="color:white;">Добро пожаловать, <a href="{% url "profile:detail" user.pk %}">{{ user }}</a></strong>
+          <strong style="color:white;">Добро пожаловать, <a href="{% url "profile:detail" user.profile.pk %}">{{ user }}</a></strong>
           <a href="{% url "cart:detail" %}">Корзина</a>
           <a href="{% url "profile:logout" %}">Выйти</a>
         {% else %}:

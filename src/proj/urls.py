@@ -27,5 +27,6 @@ urlpatterns = [
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('author/', include('author.urls', namespace='author')),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('order/', include('order.urls', namespace='order')),
     path('', HomePageView.as_view(), name='home')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

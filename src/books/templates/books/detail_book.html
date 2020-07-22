@@ -23,7 +23,7 @@
         <br><br>
         <h1>Книга {{ object.name }}</h1>
         <div>
-            <button data-cart-btn=""  class='container' class="ok-product__add-shcart ok-btn  -btn-shopping-cart ok-product__btn"><a class="ok-product__go-shcart ok-btn -btn-theme-action" href="#"><span>В корзину</span></a></button>
+            <button data-cart-btn=""  class='container' class="ok-product__add-shcart ok-btn  -btn-shopping-cart ok-product__btn"><a class="ok-product__go-shcart ok-btn -btn-theme-action" href="{% url 'cart:add' %}?book_pk={{ object.pk }}"><span>В корзину</span></a></button>
         </div>
         <table width='100%' class='container' class="table table-bordered" cellspacing="0" border="2">
             <tr>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Оформление заказа{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+    <main role="main">
+        <h3>Книги в заказе:</h3>
+            {% for books in object.cart.books.all %}
+                <h5><li class="list-group-item list-group-item-action list-group-item-warning">{{ books.book.name }} <span>{{ books.quantity }} шт. {{ books.price }} BYN.</span></li></h6>
+            {% endfor %}
+        <br>
+        <h4>Введите данные:</h4>
+        <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+        </form>
+        <br>
+        <h5>Итого к оплате {{ object.cart.price }} BYN</h5>
+        <input type="submit" class="btn btn-outline-success" value="Подтвердить">
+    </main>
+    </div>
+{% endblock body%}

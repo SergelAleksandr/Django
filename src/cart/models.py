@@ -32,22 +32,21 @@ class BookInCart(models.Model):
     )
     book = models.ForeignKey(
         Books,
-        verbose_name="Имя",
         on_delete=models.CASCADE,
         related_name='books_in_cart',
     )
     quantity = models.IntegerField(
         verbose_name="Количество",
         default=1,
-
     )
+    
     @property
     def price(self):
         price=self.quantity*self.book.price
         return price
 
     def __str__(self):
-     return f'Book #{self.book.pk} in cart #{self.cart.pk}'
+     return f'Book {self.book.pk} in cart {self.cart.pk}'
 
     class Meta:
-     unique_together = [['cart', 'book']]
+     unique_together = [['cart', 'book'],]

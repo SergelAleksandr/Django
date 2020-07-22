@@ -27,16 +27,14 @@
             <tbody>
                 <tr>
                     <tr>
-                        {% for obj in profile %}
-                            <td><img src="{{ obj.image.url }}" width="150" alt=""> </td>
-                            <td>{{ object.username }}</td>
-                            <td>{{ object.first_name }}</td>
-                            <td>{{ object.last_name }}</td> 
-                            <td>{{ object.email }}</td>
-                            <td>{{ obj.phone_number }}</td>
-                            <td>{{ obj.address1 }}</td>
-                            <td>{{ obj.address2 }}</td>
-                        {% endfor %}
+                        <td><img src="{{ profile.image.url }}" width="150" alt=""> </td>
+                        <td>{{ object.user.username }}</td>
+                        <td>{{ object.first_name }}</td>
+                        <td>{{ object.last_name }}</td> 
+                        <td>{{ object.user.email }}</td>
+                        <td>{{ profile.phone_number }}</td>
+                        <td>{{ profile.address1 }}</td>
+                        <td>{{ profile.address2 }}</td>
                     </tr>
                 </tr>
             </tbody>
