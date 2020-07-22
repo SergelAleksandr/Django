@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from cart.views import get_cart
 from django.contrib.messages.views import SuccessMessageMixin
 
-class Order(SuccessMessageMixin, UpdateView):
+class Order(UpdateView):
     model = Order
     template_name = 'order/books_in_order.html'
     form_class = OrderForm
@@ -44,9 +44,6 @@ class Order(SuccessMessageMixin, UpdateView):
             }
        )
         return obj
-
-    def get_success_message(self, *args, **kwargs):
-        return f"Заказ оформлен. В ближайшее время с Вами свяжется сотрудник магазина"
 
     def get_success_url(self):
         self.object.status = ('2','Подтвержден')

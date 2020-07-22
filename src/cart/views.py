@@ -42,7 +42,7 @@ class AddBookToCart(UpdateView):
             book=book,
             defaults={}
         )
-        return cart
+        return obj
 
 class CartDelete(DeleteView):
     model = BookInCart

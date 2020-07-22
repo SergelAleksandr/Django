@@ -37,7 +37,7 @@ class BookInCart(models.Model):
     )
     quantity = models.IntegerField(
         verbose_name="Количество",
-        default=1,
+        default=1
     )
     
     @property
