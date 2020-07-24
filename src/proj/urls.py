@@ -33,4 +33,4 @@ urlpatterns = [
     path('series/', include('series.urls', namespace='series')),
     path('', HomePageView.as_view(), name='home'),
     path('search/', Search.as_view(), name='search')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
