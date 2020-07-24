@@ -2,14 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from . import models
 from .forms import OrderForm
 from profiles.models import Profile, User
-from django.views.generic import UpdateView, DetailView, DeleteView
+from django.views.generic import UpdateView, DetailView, DeleteView, TemplateView, ListView
 from .models import Order
 from cart.models import Cart, BookInCart
 from django.urls import reverse_lazy
 from cart.views import get_cart
 from django.contrib.messages.views import SuccessMessageMixin
 
-class Order(UpdateView):
+class OrderBy(UpdateView):
     model = Order
     template_name = 'order/books_in_order.html'
     form_class = OrderForm
@@ -46,18 +46,32 @@ class Order(UpdateView):
         return obj
 
     def get_success_url(self):
-        self.object.status = ('2','Подтвержден')
+        self.object.status = ('2')
         self.object.save()
         del(self.request.session['cart_pk'])
-        return reverse_lazy('home')
+        return reverse_lazy('order:order_done')
 
 class DetailOrder(DetailView):
     model = Order
     template_name = 'order/detail_order.html'
     context_object_name = 'object'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home') 
    
 class DeleteOrder(DeleteView):
     model = Order
     template_name='order/delete_order.html'
     success_url = reverse_lazy('books:list')
+ 
+class OrderDone(TemplateView):
+    template_name = 'order/order_done.html'
+
+class OrderFor(ListView):
+    model = Order
+    template_name = 'order/order_for_user.html'
+    context_object_name = 'object'
+
+    def get_queryset(self):
+        user = self.request.user
+        user_pk = User.objects.all()
+        return user_pk
+

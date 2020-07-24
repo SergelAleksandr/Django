@@ -48,7 +48,10 @@ INSTALLED_APPS = [
     'profiles',
     'author',
     'cart',
-    'order'
+    'order',
+    'comments',
+    'publisher',
+    'series'
     
 ]
 

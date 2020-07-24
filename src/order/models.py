@@ -1,5 +1,6 @@
 from django.db import models
 from cart.models import Cart
+from profiles.models import User
 
 class Order(models.Model):
     cart = models.OneToOneField(

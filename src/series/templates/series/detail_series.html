@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Информация о серии книг{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+        <br><br>
+        <h1>{{ object.name }}</h1>
+        <table width='100%' class="table table-bordered">
+            <tr>
+                <th scope="col">Название серии</th><td>{{ object.name }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Описание серии</th><td>{{ object.description }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Книги в серии</th>
+                <td>
+                    {% for book in object.books.all %}
+                        <a href="{% url "books:detail" book.pk %}">{{ book }}</a><br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>  
+{% endblock body %}

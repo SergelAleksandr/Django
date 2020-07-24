@@ -11,33 +11,36 @@
         <br>
         
         <h1>Пользователь {{ object.first_name }} {{ object.last_name }}</h1>
-        <table width='100%' class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Изображение</th>                    
-                    <th scope="col">Никнэйм</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Фамилия</th>
-                    <th scope="col">Email</th>   
-                    <th scope="col">Номер телефона</th>    
-                    <th scope="col">Адрес доставки основной</th>  
-                    <th scope="col">Адрес доставки дополнительный</th>        
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <tr>
-                        <td><img src="{{ profile.image.url }}" width="150" alt=""> </td>
-                        <td>{{ object.user.username }}</td>
-                        <td>{{ object.first_name }}</td>
-                        <td>{{ object.last_name }}</td> 
-                        <td>{{ object.user.email }}</td>
-                        <td>{{ profile.phone_number }}</td>
-                        <td>{{ profile.address1 }}</td>
-                        <td>{{ profile.address2 }}</td>
-                    </tr>
-                </tr>
-            </tbody>
-        </table>
+        <div class='container'>
+        <br><br>
+        <table width='100%' class='container' class="table table-bordered" cellspacing="0" border="2">
+            <tr>
+                <th scope="col">Изображение</th><td><img src="{{ profile.image.url }}" width="150" alt=""></td>
+            </tr>
+            <tr>
+                <th scope="col">Никнэйм</th><td>{{ object.user.username }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Имя</th><td>{{ object.first_name }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Фамилия<td>{{ object.last_name }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Email</th><td>{{ object.user.email }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Номер телефона</th><td>{{ profile.phone_number }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Адрес доставки основной</th><td>{{ profile.address1 }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Адрес доставки дополнительный</th><td>{{ profile.address2 }}</td>
+            </tr>
+        </table><br>
+        <a href="{% url "order:order_for_user"%}?user_pk={{ user.pk }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Заказы пользователя</a><br>
+        <br>
     </div>  
+     
 {% endblock body %}

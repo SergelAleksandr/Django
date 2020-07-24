@@ -4,7 +4,7 @@ from genre.models import Genre
 from author.models import Author
 from django.template import Context
 # from cart.models import BooksInCart
-from .forms import CreateProfileForm, LoginForm
+from .forms import CreateProfileForm, UpdateProfileForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, authenticate
@@ -12,7 +12,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission, Group
 from django import forms
 from django.http import HttpResponseRedirect
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.views.generic import FormView, UpdateView, DetailView, DeleteView, TemplateView
 
 class CreateProfile(FormView):
@@ -48,6 +48,7 @@ class CreateProfile(FormView):
             user=User.objects.get(username=form_username),
             first_name=form_first_name,
             last_name=form_last_name,
+            email=form_email,
             phone_number=form_phone_number,
             address1=form_address1,
             address2=form_address2,
@@ -63,7 +64,7 @@ class CreateProfile(FormView):
 
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = Profile
-    form_class = CreateProfileForm
+    form_class = UpdateProfileForm
     template_name = 'profiles/update_profile.html'
     
     def get_success_url(self):
@@ -105,18 +106,6 @@ class PasswordChangeDone(PasswordChangeDoneView):
 
     def get_success_url(self):
        return reverse_lazy('home')
-
-class PasswordReset(PasswordResetView):
-    template_name = 'profiles/password_reset.html'
-
-class PasswordResetDone(PasswordResetDoneView):
-    template_name = 'profiles/password_reset_done.html'
- 
-class PasswordResetConfirm(PasswordResetConfirmView):
-    template_name = 'profiles/password_reset_confirm.html'
-
-class PasswordResetComplete(PasswordResetCompleteView):
-    template_name = 'profiles/password_reset_complete.html'
 
 
 

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from books.views import HomePageView
+from books.views import HomePageView, Search
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,5 +28,9 @@ urlpatterns = [
     path('author/', include('author.urls', namespace='author')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('order/', include('order.urls', namespace='order')),
-    path('', HomePageView.as_view(), name='home')
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('comments/', include('comments.urls', namespace='comments')),
+    path('publisher/', include('publisher.urls', namespace='publisher')),
+    path('series/', include('series.urls', namespace='series')),
+    path('', HomePageView.as_view(), name='home'),
+    path('search/', Search.as_view(), name='search')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,30 +8,26 @@
         <br><br>
         <h1>{{ object.name }}</h1>
         <table width='100%' class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Фотография</th>
-                    <th scope="col">Имя автора</th>
-                    <th scope="col">Год рождения</th>
-                    <th scope="col">Книги автора</th>
-                    <th scope="col">Биография</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <tr>
-                        <td><img src="{{ object.image.url }}" width="150" alt=""> </td>
-                        <td>{{ object.name }}</td>
-                        <td>{{ object.birth }}</td>
-                        <td>
-                        {% for book in object.books.all %}
-                            <a href="{% url "books:detail" object.pk %}">{{ book }}</a><br>
-                        {% endfor %}
-                        </td>
-                        <td>{{ object.biography }}</td>
-                    </tr>
-                </tr>
-            </tbody>
+            <tr>
+                <th scope="col">Фотография</th><td><img src="{{ object.image.url }}" width="150" alt=""></td>
+            </tr>
+            <tr>
+                <th scope="col">Имя автора</th><td>{{ object.name }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Год рождения</th><td>{{ object.birth }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Книги автора</th>
+                <td>
+                    {% for book in object.books.all %}
+                        <a href="{% url "books:detail" book.pk %}">{{ book }}</a><br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">Биография</th><td>{{ object.biography }}</td>
+            </tr>
         </table>
     </div>  
 {% endblock body %}

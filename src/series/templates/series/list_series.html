@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Список серий книг{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+    <br><br>
+    <h1>Список серий книг</h1>
+    {% if user.is_superuser %}:
+        <a href="{% url 'series:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить серию книг</a><br>
+    {% endif %}
+    <table width='100%' class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Название</th> 
+                <th scope="col">Описание</th>             
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for obj in object_list %}
+                    <tr>
+                        <td><a href="{% url "series:detail" obj.pk %}">{{ obj.name }}</a></td>
+                        <td>{{ obj.description }}</td>
+                        <td>
+                            {% if user.is_superuser %}:
+                                <a href="{% url "series:update" obj.pk %}">Изменить</a><br>
+                                <a href="{% url "series:delete" obj.pk %}">Удалить</a><br>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    </div> 
+{% endblock body %}

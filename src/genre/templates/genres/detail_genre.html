@@ -5,14 +5,20 @@
 
 {% block body %}
     <div class='container'>
-        <br><br>
+        <br>
         <h1>Жанр {{ object.name }}</h1><br>
-        <h3>Описание: {{ object.description }}</h3><br>
-        <h4>
-            Книги жанра {{ object.name }}:<br>
-            {% for book in object.books1.all %}
-                <a href="{% url "books:detail" object.pk %}">{{ book }}</a><br>
-            {% endfor %}
-        </h4>
+        <table width='100%' class="table table-bordered">
+            <tr>
+                <th scope="col">Описание</th><td><img src="{{ object.description }}" width="150" alt=""></td>
+            <tr/>
+            <tr>
+                <th scope="col">Книги жанра</th>
+                <td>
+                    {% for book in object.books.all %}
+                        <a href="{% url "books:detail" book.pk %}">{{ book }}</a><br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
     </div>  
 {% endblock body %}

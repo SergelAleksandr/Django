@@ -1,9 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-
-class LoginForm(forms.Form):
-    username = forms.CharField(label='Имя пользователя', max_length=20),
-    password = forms.CharField(widget=forms.PasswordInput)
+from .models import Profile
 
 class CreateProfileForm(forms.Form):
     username = forms.CharField(label='Имя пользователя', max_length=15)
@@ -16,3 +13,14 @@ class CreateProfileForm(forms.Form):
     address1 = forms.CharField(label='Адрес доставки основной', max_length=500)
     address2 = forms.CharField(label='Адрес доставки дополнительный', max_length=500)
     image = forms.ImageField(label='Изображение')
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+        'first_name',
+        'last_name',
+        'phone_number',
+        'email',
+        'image'
+        )

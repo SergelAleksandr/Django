@@ -18,6 +18,6 @@ class CreateBookForm(forms.ModelForm):
             'isbn',
             'weight',
             'age',
-            'publishing',
+            'publisher',
             'rate',
         )

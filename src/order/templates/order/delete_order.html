@@ -7,7 +7,6 @@
   <h1>Удалить {{object.name}}</h1>
   <form action="" method="post">
     {% csrf_token %}
-    {% comment %} {{ context }} {% endcomment %}
     <br>
     <input type="submit" class="btn btn-outline-danger" value="Подтвердить удаление">
   </form>

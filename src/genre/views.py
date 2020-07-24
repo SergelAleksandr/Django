@@ -13,11 +13,10 @@ class CreateGenre(LoginRequiredMixin, CreateView):
     form_class = CreateGenreForm
     template_name = 'genres/create_genre.html'
 
-
 class UpdateGenre(LoginRequiredMixin, UpdateView):
     model = Genre
     form_class = CreateGenreForm
-    template_name = 'genres/update_genre.html'
+    template_name = 'genres/update_genre.html' 
     def get_success_url(self):
         return reverse_lazy('genres:detail', kwargs={'pk': self.object.pk})
         

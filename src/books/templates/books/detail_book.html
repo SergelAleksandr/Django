@@ -32,7 +32,14 @@
             <tr>
                 <th scope="col">Автор книги</th><td>
                 {% for author in object.author.all %}
-                    <a href="{% url "author:detail" object.pk %}">{{ author }}</a>
+                    <a href="{% url "author:detail" author.pk %}">{{ author }}</a>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">Серия книг</th><td>
+                {% for series in object.series.all %}
+                    <a href="{% url "series:detail" series.pk %}">{{ series }}</a>
                 {% endfor %}
                 </td>
             </tr>
@@ -42,7 +49,7 @@
             <tr>
                 <th scope="col">Жанр книги</th><td>
                 {% for genre in object.genre.all %}
-                    <a href="{% url "books:detail" object.pk %}">{{ genre }}</a><br>
+                    <a href="{% url "genres:detail" genre.pk %}">{{ genre }}</a><br>
                 {% endfor %}
                 </td>
             </tr>
@@ -71,7 +78,11 @@
                 <th scope="col">Возрастные ограничения</th><td>{{ object.age }}</td>
             </tr>
             <tr>
-                <th scope="col">Издательство</th><td>{{ object.publishing }}</td>
+                <th scope="col">Издательство</th><td>
+                {% for publisher in object.publisher.all %}
+                    <a href="{% url "publisher:detail" publisher.pk %}">{{ publisher }}</a>
+                {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th scope="col">Рейтинг</th><td>{{ object.rate }}</td>
@@ -83,5 +94,8 @@
                 <th scope="col">Дата изменения</th><td>{{ object.update_time }}</td>
             </tr>
         </table>
-    </div>  
+    </div> 
+
+    {% include "comments.html" %}
+
 {% endblock body %}

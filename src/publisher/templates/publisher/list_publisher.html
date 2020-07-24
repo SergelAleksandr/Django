@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Список издательств{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+    <br><br>
+    <h1>Список издательств</h1>
+    {% if user.is_superuser %}:
+        <a href="{% url 'publisher:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить издательство</a><br>
+    {% endif %}
+    <table width='100%' class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>          
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for obj in object_list %}
+                    <tr>
+                        <td>{{ obj.name }}</td>
+                        <td>
+                            {% if user.is_superuser %}:
+                                <a href="{% url "publisher:update" obj.pk %}">Изменить</a><br>
+                                <a href="{% url "publisher:delete" obj.pk %}">Удалить</a><br>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    </div> 
+{% endblock body %}

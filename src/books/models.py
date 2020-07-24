@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse_lazy
 from genre.models import Genre
 from author.models import Author
+from series.models import Series
+from publisher.models import Publisher
 
 class Books(models.Model):
     name = models.CharField(
@@ -13,6 +15,12 @@ class Books(models.Model):
         verbose_name='Автор',
         related_name='books'
     )
+    series = models.ForeignKey(
+        Series,
+        verbose_name='Серия книг',
+        related_name='series',
+        on_delete=models.PROTECT
+    )
     description = models.TextField(
         verbose_name='Описание книги',
         null=True,
@@ -21,7 +29,7 @@ class Books(models.Model):
     genre = models.ManyToManyField(
         Genre,
         verbose_name='Жанр',
-        related_name='books1'
+        related_name='books'
     )
     image = models.ImageField(
         verbose_name='Обложка книги',
@@ -56,9 +64,11 @@ class Books(models.Model):
     age = models.IntegerField(
         verbose_name='Возрастные ограничения',
     )
-    publishing = models.CharField(
+    publisher = models.ForeignKey(
+        Publisher,
         verbose_name='Издательство',
-        max_length=20
+        related_name='publisher',
+        on_delete=models.PROTECT
     )
     rate = models.IntegerField(
         verbose_name='Рейтинг (0-10)',

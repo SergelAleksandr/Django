@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Заказы пользователя{% endblock title %}
+
+{% block body %}
+    <div class='container'>
+
+        <h1>Заказы</h1>
+        <div class='container'>
+        <br><br>
+        <table width='100%' class='container' class="table table-bordered" cellspacing="0" border="2">
+            <tr>
+            <th scope="col">Книги в корзине</th>
+                {% for books in object.cart.books.all %}
+                    <h6>{{ books.books.name }</h6>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th scope="col">Статус</th><td>{{ object.status }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Создана</th><td>{{ object.created }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Изменена<td>{{ object.updated }}</td>
+            </tr>
+        </table><br>
+    </div>  
+     
+{% endblock body %}
